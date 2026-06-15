@@ -8,7 +8,7 @@ allow_usage if {
     input.reference.document == "AMO"
 }
 
-# Allow pharmacist / specialist to pushback if ... (to be continued)
+# Allow pharmacist / specialist to pushback
 allow_usage if {
     input.action == "pushback"
     input.reference.document == "AMO"

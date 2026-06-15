@@ -14,7 +14,7 @@ binding_window_valid if {
 
 binding_window_valid if {
     not input.reference.is_bound
-    time.date() <= input.reference.bind_expiry_window
+    time.date(time.now_ns()) <= input.reference.bind_expiry_window
 }
 
 
@@ -24,49 +24,49 @@ binding_window_valid if {
 allow_bind if {
     binding_window_valid
 
-    input.delegator_type == "HA"
+    input.delegator.org_type == "HA"
 }
 
 # HAP can delegate to anyone except Specialists
 allow_bind if {
     binding_window_valid
 
-    input.delegator_type == "HAP"
-    input.target.org_type != "Specialist"
+    input.delegator.org_type == "HAP"
+    input.delegatee.org_type != "Specialist"
 }
 
 # SEH can delegate to specialist or pharmacy
 allow_bind if {
     binding_window_valid
 
-    input.delegator_type == "SEH"
-    input.target.org_type == "Specialist"
+    input.delegator.org_type == "SEH"
+    input.delegatee.org_type == "Specialist"
 }
 allow_bind if {
-    input.delegator_type == "SEH"
-    input.target.org_type == "AP"
+    input.delegator.org_type == "SEH"
+    input.delegatee.org_type == "AP"
 }
 
 # Pharmacy can only delegate to Pharmacy.
 allow_bind if {
     binding_window_valid
 
-    input.delegator_type == "AP"
-    input.target.org_type == "AP"
+    input.delegator.org_type == "AP"
+    input.delegatee.org_type == "AP"
 }
 
 # Specialist can delegate to specialist.
 allow_bind if {
     binding_window_valid
 
-    input.delegator_type == "Specialist"
-    input.target.org_type == "Specialist"
+    input.delegator.org_type == "Specialist"
+    input.delegatee.org_type == "Specialist"
 }
 
 # Specialist can delegate to pharmacy.
 allow_bind if {
     binding_window_valid
 
-    input.delegator_type == "Specialist"
-    input.target.org_type == "AP"
+    input.delegator.org_type == "Specialist"
+    input.delegatee.org_type == "AP"
 }
