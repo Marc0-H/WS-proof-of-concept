@@ -14,7 +14,8 @@ test_ap_can_bind_ap if {
         },
         "delegatee": {
             "user_id": 456,
-            "org_type": "AP"
+            "org_type": "AP",
+            "provided_code": null
         },
 
         "reference": {
@@ -22,6 +23,8 @@ test_ap_can_bind_ap if {
             "bound_user_id": null,
             "revoked": false,
             "can_copy": false,
+            "expects_access_code": false,
+            "access_code": null,
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1]
         }
@@ -38,7 +41,8 @@ test_ap_can_bind_ap_but_bind_expiry_window if {
         },
         "delegatee": {
             "user_id": 456,
-            "org_type": "AP"
+            "org_type": "AP",
+            "provided_code": null
         },
 
         "reference": {
@@ -46,6 +50,8 @@ test_ap_can_bind_ap_but_bind_expiry_window if {
             "bound_user_id": null,
             "revoked": false,
             "can_copy": false,
+            "expects_access_code": false,
+            "access_code": null,
             "bind_expiry_window": [2024, 1, 1],
             "expiry": [2028, 1, 1]
         }
@@ -62,7 +68,8 @@ test_ap_cannot_bind_specialist if {
         },
         "delegatee": {
             "user_id": 456,
-            "org_type": "Specialist"
+            "org_type": "Specialist",
+            "provided_code": null
         },
 
         "reference": {
@@ -70,6 +77,8 @@ test_ap_cannot_bind_specialist if {
             "bound_user_id": null,
             "revoked": false,
             "can_copy": false,
+            "expects_access_code": false,
+            "access_code": null,
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1]
         }
