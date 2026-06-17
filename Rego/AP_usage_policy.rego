@@ -1,4 +1,4 @@
-package pa.usage
+package pa.ap_usage
 
 default allow_usage := false
 

@@ -16,21 +16,21 @@ binding_window_valid if {
 
 
 
-# Check if this is a first-time access attempt and if an access code is expected.
+# Check if this is a first-time access attempt and if a binding pin is expected.
 # In case the reference is already bound or no access code is expected, return true.
-validate_patient_access_code if {
+validate_patient_binding_pin if {
     input.reference.is_bound
 }
 
-validate_patient_access_code if {
+validate_patient_binding_pin if {
     not input.reference.is_bound
-    input.reference.expects_access_code == false
+    input.reference.expects_binding_pin == false
 }
 
-validate_patient_access_code if {
+validate_patient_binding_pin if {
     not input.reference.is_bound
-    input.reference.expects_access_code == true
-    input.reference.access_code == input.delegatee.access_code
+    input.reference.expects_binding_pin == true
+    input.reference.binding_pin == input.delegatee.binding_pin
 }
 
 
@@ -38,7 +38,7 @@ validate_patient_access_code if {
 # HA can delegate to anyone
 allow_bind if {
     binding_window_valid
-    validate_patient_access_code
+    validate_patient_binding_pin
 
     input.delegator.org_type == "HA"
 }
@@ -46,7 +46,7 @@ allow_bind if {
 # HAP can delegate to anyone except Specialists
 allow_bind if {
     binding_window_valid
-    validate_patient_access_code
+    validate_patient_binding_pin
 
     input.delegator.org_type == "HAP"
     input.delegatee.org_type != "Specialist"
@@ -55,7 +55,7 @@ allow_bind if {
 # SEH can delegate to specialist or pharmacy
 allow_bind if {
     binding_window_valid
-    validate_patient_access_code
+    validate_patient_binding_pin
 
     input.delegator.org_type == "SEH"
     input.delegatee.org_type == "Specialist"
@@ -68,7 +68,7 @@ allow_bind if {
 # Pharmacy can only delegate to Pharmacy.
 allow_bind if {
     binding_window_valid
-    validate_patient_access_code
+    validate_patient_binding_pin
 
     input.delegator.org_type == "AP"
     input.delegatee.org_type == "AP"
@@ -77,7 +77,7 @@ allow_bind if {
 # Specialist can delegate to specialist.
 allow_bind if {
     binding_window_valid
-    validate_patient_access_code
+    validate_patient_binding_pin
 
     input.delegator.org_type == "Specialist"
     input.delegatee.org_type == "Specialist"
@@ -86,7 +86,7 @@ allow_bind if {
 # Specialist can delegate to pharmacy.
 allow_bind if {
     binding_window_valid
-    validate_patient_access_code
+    validate_patient_binding_pin
 
     input.delegator.org_type == "Specialist"
     input.delegatee.org_type == "AP"
