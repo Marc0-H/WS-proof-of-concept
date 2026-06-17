@@ -5,11 +5,11 @@ default allow_bind := false
 # Check if this is a first-time access attempt and if the reference is late-bound
 # If current time falls outside the binding window, return false.
 binding_window_valid if {
-    input.reference.is_bound
+    input.reference.is_bound == true
 }
 
 binding_window_valid if {
-    not input.reference.is_bound
+    input.reference.is_bound == false
     time.date(time.now_ns()) <= input.reference.bind_expiry_window
 }
 
@@ -19,16 +19,16 @@ binding_window_valid if {
 # Check if this is a first-time access attempt and if a binding pin is expected.
 # In case the reference is already bound or no access code is expected, return true.
 validate_patient_binding_pin if {
-    input.reference.is_bound
+    input.reference.is_bound == true
 }
 
 validate_patient_binding_pin if {
-    not input.reference.is_bound
+    input.reference.is_bound == false
     input.reference.expects_binding_pin == false
 }
 
 validate_patient_binding_pin if {
-    not input.reference.is_bound
+    input.reference.is_bound == false
     input.reference.expects_binding_pin == true
     input.reference.binding_pin == input.delegatee.binding_pin
 }
