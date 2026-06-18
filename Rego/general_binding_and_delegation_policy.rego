@@ -15,7 +15,6 @@ binding_window_valid if {
 
 
 
-
 # Check if this is a first-time access attempt and if a binding pin is expected.
 # In case the reference is already bound or no access code is expected, return true.
 validate_patient_binding_pin if {
@@ -32,7 +31,6 @@ validate_patient_binding_pin if {
     input.reference.expects_binding_pin == true
     input.reference.binding_pin == input.delegatee.binding_pin
 }
-
 
 
 # HA can delegate to anyone

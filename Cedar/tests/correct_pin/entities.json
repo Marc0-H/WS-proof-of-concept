@@ -1,0 +1,26 @@
+[
+  {
+    "uid": {
+      "type": "delegator",
+      "id": "123"
+    },
+    "attrs": {
+      "org_type": "AP",
+      "binding_pin": "987"
+    },
+    "parents": []
+  },
+  {
+    "uid": {
+      "type": "reference",
+      "id": "ref1"
+    },
+    "attrs": {
+      "is_bound": false,
+      "expects_binding_pin": true,
+      "binding_pin": "987",
+      "bind_expiry_window": "2027-01-01T00:00:00Z"
+    },
+    "parents": []
+  }
+]
