@@ -5,6 +5,7 @@
   "context": {
     "delegatee_org_type": "AP",
     "current_time": "2026-01-01T00:00:00Z",
-    "delegatee_id": "456"
+    "delegatee_user_uzi_id": "456",
+    "delegatee_user_level": "Head"
   }
 }

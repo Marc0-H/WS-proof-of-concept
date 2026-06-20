@@ -29,7 +29,12 @@ permit (
     action == Action::"bind",
     resource
 )
-when { principal.org_type == "HA" };
+when
+{
+    principal.org_type == "HA" &&
+    principal.user_level == "Head" &&
+    ["Head", "Assistant"].contains(context.delegatee_user_level)
+};
 
 //HAP cannot delegate to Specialists
 permit (
@@ -38,7 +43,12 @@ permit (
     resource
 )
 when
-{ principal.org_type == "HAP" && context.delegatee_org_type != "Specialist" };
+{
+    principal.org_type == "HAP" &&
+    context.delegatee_org_type != "SPEC" &&
+    principal.user_level == "Head" &&
+    ["Head", "Assistant"].contains(context.delegatee_user_level)
+};
 
 // SEH can delegate to Specialist and pharmacist
 permit (
@@ -47,14 +57,12 @@ permit (
     resource
 )
 when
-{ principal.org_type == "SEH" && context.delegatee_org_type == "Specialist" };
-
-permit (
-    principal,
-    action == Action::"bind",
-    resource
-)
-when { principal.org_type == "SEH" && context.delegatee_org_type == "AP" };
+{
+    principal.org_type == "SEH" &&
+    ["SPEC", "AP"].contains(context.delegatee_org_type) &&
+    principal.user_level == "Head" &&
+    ["Head", "Assistant"].contains(context.delegatee_user_level)
+};
 
 // Pharmacy can only delegate to Pharmacy
 permit (
@@ -62,7 +70,13 @@ permit (
     action == Action::"bind",
     resource
 )
-when { principal.org_type == "AP" && context.delegatee_org_type == "AP" };
+when
+{
+    principal.org_type == "AP" &&
+    context.delegatee_org_type == "AP" &&
+    principal.user_level == "Head" &&
+    ["Head", "Assistant"].contains(context.delegatee_user_level)
+};
 
 // Specialist can delegate to Specialist and pharmacy
 permit (
@@ -72,14 +86,8 @@ permit (
 )
 when
 {
-    principal.org_type == "Specialist" &&
-    context.delegatee_org_type == "Specialist"
+    principal.org_type == "SPEC" &&
+    ["SPEC", "AP"].contains(context.delegatee_org_type) &&
+    ["Head", "Assistant"].contains(principal.user_level) &&
+    context.delegatee.user_level == "Head"
 };
-
-permit (
-    principal,
-    action == Action::"bind",
-    resource
-)
-when
-{ principal.org_type == "Specialist" && context.delegatee_org_type == "AP" };

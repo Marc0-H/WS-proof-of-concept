@@ -4,7 +4,11 @@ permit (
     action == Action::"Retrieve",
     resource
 )
-when { resource.document == "Mini-PS" };
+when
+{
+    ["Mini-PS", "AMO"].contains(resource.document) &&
+    resource.allowed_permissions.contains(action)
+};
 
 // Pushback
 permit (
@@ -12,7 +16,11 @@ permit (
     action == Action::"Pushback",
     resource
 )
-when { resource.document == "Mini-PS" };
+when
+{
+    ["Mini-PS", "AMO"].contains(resource.document) &&
+    resource.allowed_permissions.contains(action)
+};
 
 // Delegate/ Copy
 permit (

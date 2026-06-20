@@ -6,7 +6,7 @@ permit (
 )
 when
 {
-    ["NHG-PS", "Mini-PS", "AMO"].contains(resource.document) &&
+    ["AMO"].contains(resource.document) &&
     resource.allowed_permissions.contains("Retrieve")
 };
 
@@ -18,7 +18,7 @@ permit (
 )
 when
 {
-    ["NHG-PS", "Mini-PS", "AMO"].contains(resource.document) &&
+    ["AMO"].contains(resource.document) &&
     resource.allowed_permissions.contains("Pushback")
 };
 
@@ -28,4 +28,8 @@ permit (
     action == Action::"Copy",
     resource
 )
-when { resource.can_copy };
+when
+{
+    ["AMO"].contains(resource.document) &&
+    resource.allowed_permissions.contains(action)
+};

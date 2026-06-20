@@ -4,6 +4,7 @@
   "resource": "reference::\"ref1\"",
   "context": {
     "delegatee_org_type": "AP",
+    "delegatee_user_level": "Head",
     "current_time": "2026-01-01T00:00:00Z"
   }
 }

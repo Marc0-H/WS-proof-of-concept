@@ -5,7 +5,8 @@
       "id": "123"
     },
     "attrs": {
-      "org_type": "AP"
+      "org_type": "AP",
+      "user_level": "Head"
     },
     "parents": []
   },
@@ -17,7 +18,8 @@
     "attrs": {
       "is_bound": false,
       "expects_binding_pin": false,
-      "bind_expiry_window": "2027-01-01T00:00:00Z"
+      "bind_expiry_window": "2027-01-01T00:00:00Z",
+      "allowed_permissions": ["Retrieve", "Pushback"]
     },
     "parents": []
   }

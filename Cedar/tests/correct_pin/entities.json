@@ -6,6 +6,7 @@
     },
     "attrs": {
       "org_type": "AP",
+      "user_level": "Head",
       "binding_pin": "987"
     },
     "parents": []
@@ -19,7 +20,8 @@
       "is_bound": false,
       "expects_binding_pin": true,
       "binding_pin": "987",
-      "bind_expiry_window": "2027-01-01T00:00:00Z"
+      "bind_expiry_window": "2027-01-01T00:00:00Z",
+      "allowed_permissions": ["Retrieve", "Pushback"]
     },
     "parents": []
   }
