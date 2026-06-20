@@ -6,18 +6,18 @@ import data.pa.ap_usage
 test_read_allowed if {
     ap_usage.allow_usage with input as {
         "delegator": {
-            "user_id": 123,
+            "user_uzi_id": 123,
             "org_type": "AP"
         },
         "delegatee": {
-            "user_id": 456,
+            "user_uzi_id": 456,
             "org_type": "AP",
             "binding_pin": null
         },
 
         "reference": {
             "is_bound": true,
-            "bound_user_id": 456,
+            "bound_user_uzi_id": 456,
             "bound_user_role": "AP",
             "revoked": false,
             "can_copy": false,
@@ -25,7 +25,8 @@ test_read_allowed if {
             "binding_pin": null,
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1],
-            "document": "AMO"
+            "document": "AMO",
+            "allowed_permissions": ["retrieve", "pushback"]
         },
 
         "action": "retrieve"
@@ -36,18 +37,18 @@ test_read_allowed if {
 test_read_not_allowed if {
     not ap_usage.allow_usage with input as {
         "delegator": {
-            "user_id": 123,
+            "user_uzi_id": 123,
             "org_type": "AP"
         },
         "delegatee": {
-            "user_id": 456,
+            "user_uzi_id": 456,
             "org_type": "AP",
             "binding_pin": null
         },
 
         "reference": {
             "is_bound": true,
-            "bound_user_id": 456,
+            "bound_user_uzi_id": 456,
             "bound_user_role": "AP",
             "revoked": false,
             "can_copy": false,
@@ -55,7 +56,8 @@ test_read_not_allowed if {
             "binding_pin": null,
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1],
-            "document": "NHG-PS"
+            "document": "NHG-PS",
+            "allowed_permissions": ["retrieve", "pushback"]
         },
 
         "action": "retrieve"
@@ -66,18 +68,18 @@ test_read_not_allowed if {
 test_copy_allowed if {
     ap_usage.allow_usage with input as {
         "delegator": {
-            "user_id": 123,
+            "user_uzi_id": 123,
             "org_type": "AP"
         },
         "delegatee": {
-            "user_id": 456,
+            "user_uzi_id": 456,
             "org_type": "AP",
             "binding_pin": null
         },
 
         "reference": {
             "is_bound": true,
-            "bound_user_id": 456,
+            "bound_user_uzi_id": 456,
             "bound_user_role": "AP",
             "revoked": false,
             "can_copy": true,
@@ -85,7 +87,8 @@ test_copy_allowed if {
             "binding_pin": null,
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1],
-            "document": "AMO"
+            "document": "AMO",
+            "allowed_permissions": ["retrieve", "pushback"]
         },
 
         "action": "copy"

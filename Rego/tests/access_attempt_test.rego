@@ -8,18 +8,18 @@ import data.pa.access
 test_correct_id if {
     access.allow_access with input as {
         "delegator": {
-            "user_id": 123,
+            "user_uzi_id": 123,
             "org_type": "AP"
         },
         "delegatee": {
-            "user_id": 456,
+            "user_uzi_id": 456,
             "org_type": "AP",
             "binding_pin": null
         },
 
         "reference": {
             "is_bound": true,
-            "bound_user_id": 456,
+            "bound_user_uzi_id": 456,
             "bound_user_role": "AP",
             "revoked": false,
             "can_copy": false,
@@ -27,7 +27,8 @@ test_correct_id if {
             "binding_pin": null,
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1],
-            "document": "AMO"
+            "document": "AMO",
+            "allowed_permissions": ["retrieve", "pushback"]
         }
     }
 }
@@ -38,18 +39,18 @@ test_correct_id if {
 test_incorrect_id if {
     not access.allow_access with input as {
         "delegator": {
-            "user_id": 123,
+            "user_uzi_id": 123,
             "org_type": "AP"
         },
         "delegatee": {
-            "user_id": 456,
+            "user_uzi_id": 456,
             "org_type": "AP",
             "binding_pin": null
         },
 
         "reference": {
             "is_bound": true,
-            "bound_user_id": 98765,
+            "bound_user_uzi_id": 98765,
             "bound_user_role": "AP",
             "revoked": false,
             "can_copy": false,
@@ -57,7 +58,8 @@ test_incorrect_id if {
             "binding_pin": null,
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1],
-            "document": "AMO"
+            "document": "AMO",
+            "allowed_permissions": ["retrieve", "pushback"]
         }
     }
 }
@@ -68,18 +70,18 @@ test_incorrect_id if {
 test_revoked if {
     not access.allow_access with input as {
         "delegator": {
-            "user_id": 123,
+            "user_uzi_id": 123,
             "org_type": "AP"
         },
         "delegatee": {
-            "user_id": 456,
+            "user_uzi_id": 456,
             "org_type": "AP",
             "binding_pin": null
         },
 
         "reference": {
             "is_bound": true,
-            "bound_user_id": 456,
+            "bound_user_uzi_id": 456,
             "bound_user_role": "AP",
             "revoked": true,
             "can_copy": false,
@@ -87,7 +89,8 @@ test_revoked if {
             "binding_pin": null,
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1],
-            "document": "AMO"
+            "document": "AMO",
+            "allowed_permissions": ["retrieve", "pushback"]
         }
     }
 }
@@ -97,18 +100,18 @@ test_revoked if {
 test_expired if {
     not access.allow_access with input as {
         "delegator": {
-            "user_id": 123,
+            "user_uzi_id": 123,
             "org_type": "AP"
         },
         "delegatee": {
-            "user_id": 456,
+            "user_uzi_id": 456,
             "org_type": "AP",
             "binding_pin": null
         },
 
         "reference": {
             "is_bound": true,
-            "bound_user_id": 456,
+            "bound_user_uzi_id": 456,
             "bound_user_role": "AP",
             "revoked": false,
             "can_copy": false,
@@ -116,7 +119,8 @@ test_expired if {
             "binding_pin": null,
             "bind_expiry_window": [2024, 1, 1],
             "expiry": [2025, 1, 1],
-            "document": "AMO"
+            "document": "AMO",
+            "allowed_permissions": ["retrieve", "pushback"]
         }
     }
 }
