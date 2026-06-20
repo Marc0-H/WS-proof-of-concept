@@ -7,11 +7,13 @@ test_read_allowed if {
     ap_usage.allow_usage with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP"
+            "org_type": "AP",
+            "user_level": "Head"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
+            "user_level": "Head",
             "binding_pin": null
         },
 
@@ -26,10 +28,10 @@ test_read_allowed if {
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1],
             "document": "AMO",
-            "allowed_permissions": ["retrieve", "pushback"]
+            "allowed_permissions": ["Retrieve", "Pushback"]
         },
 
-        "action": "retrieve"
+        "action": "Retrieve"
     }
 }
 
@@ -38,11 +40,13 @@ test_read_not_allowed if {
     not ap_usage.allow_usage with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP"
+            "org_type": "AP",
+            "user_level": "Head"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
+            "user_level": "Head",
             "binding_pin": null
         },
 
@@ -57,10 +61,10 @@ test_read_not_allowed if {
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1],
             "document": "NHG-PS",
-            "allowed_permissions": ["retrieve", "pushback"]
+            "allowed_permissions": ["Retrieve", "Pushback"]
         },
 
-        "action": "retrieve"
+        "action": "Retrieve"
     }
 }
 
@@ -69,11 +73,13 @@ test_copy_allowed if {
     ap_usage.allow_usage with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP"
+            "org_type": "AP",
+            "user_level": "Head"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
+            "user_level": "Head",
             "binding_pin": null
         },
 
@@ -88,9 +94,9 @@ test_copy_allowed if {
             "bind_expiry_window": [2027, 1, 1],
             "expiry": [2028, 1, 1],
             "document": "AMO",
-            "allowed_permissions": ["retrieve", "pushback"]
+            "allowed_permissions": ["Retrieve", "Pushback"]
         },
 
-        "action": "copy"
+        "action": "Copy"
     }
 }
