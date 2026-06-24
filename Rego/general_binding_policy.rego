@@ -49,9 +49,6 @@ allow_bind if {
     binding_pin_requirement_satisfied
 
     input.delegator.org_type == "HA"
-
-    input.delegator.user_level == "Head"
-    input.delegatee.user_level in ["Head", "Assistant"]
 }
 
 # HAP can delegate to anyone except Specialists
@@ -61,9 +58,6 @@ allow_bind if {
 
     input.delegator.org_type == "HAP"
     input.delegatee.org_type != "SPEC"
-
-    input.delegator.user_level == "Head"
-    input.delegatee.user_level in ["Head", "Assistant"]
 }
 
 # SEH can delegate to specialist or pharmacy
@@ -73,9 +67,6 @@ allow_bind if {
 
     input.delegator.org_type == "SEH"
     input.delegatee.org_type in ["SPEC", "AP"]
-
-    input.delegator.user_level == "Head"
-    input.delegatee.user_level in ["Head", "Assistant"]
 }
 
 # Pharmacy can only delegate to Pharmacy.
@@ -85,9 +76,6 @@ allow_bind if {
 
     input.delegator.org_type == "AP"
     input.delegatee.org_type == "AP"
-
-    input.delegator.user_level == "Head"
-    input.delegatee.user_level in ["Head", "Assistant"]
 }
 
 # Specialist can delegate to specialist.
@@ -97,7 +85,4 @@ allow_bind if {
 
     input.delegator.org_type == "SPEC"
     input.delegatee.org_type in ["SPEC", "AP"]
-
-    input.delegator.user_level in ["Head", "Assistant"]
-    input.delegatee.user_level == "Head"
 }

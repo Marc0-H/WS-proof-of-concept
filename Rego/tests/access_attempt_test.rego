@@ -2,20 +2,18 @@
 
 package pa.access_attempt_test
 
-import data.pa.access
+import data.pa.usage
 
 # Test passes when access is allowed and bound user id == delegatee.user_id
 test_correct_id if {
-    access.allow_access with input as {
+    usage.basic_access_requirements_satisfied with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP",
-            "user_level": "Head"
+            "org_type": "AP"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
-            "user_level": "Head",
             "binding_pin": null
         },
 
@@ -39,16 +37,14 @@ test_correct_id if {
 
 # Test passes when access is denied and bound user id != delegatee.user_id
 test_incorrect_id if {
-    not access.allow_access with input as {
+    not usage.basic_access_requirements_satisfied with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP",
-            "user_level": "Head"
+            "org_type": "AP"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
-            "user_level": "Head",
             "binding_pin": null
         },
 
@@ -72,16 +68,14 @@ test_incorrect_id if {
 
 # Test passes when reference is revoked and access denied
 test_revoked if {
-    not access.allow_access with input as {
+    not usage.basic_access_requirements_satisfied with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP",
-            "user_level": "Head"
+            "org_type": "AP"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
-            "user_level": "Head",
             "binding_pin": null
         },
 
@@ -104,16 +98,14 @@ test_revoked if {
 
 # Test passes when reference is expired and access denied
 test_expired if {
-    not access.allow_access with input as {
+    not usage.basic_access_requirements_satisfied with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP",
-            "user_level": "Head"
+            "org_type": "AP"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
-            "user_level": "Head",
             "binding_pin": null
         },
 

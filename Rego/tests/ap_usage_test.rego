@@ -1,19 +1,17 @@
 package pa.ap_usage_test
 
-import data.pa.ap_usage
+import data.pa.usage
 
 # Test passes when AP attempts to read AMO document and action is allowed
 test_read_allowed if {
-    ap_usage.allow_usage with input as {
+    usage.allow_usage with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP",
-            "user_level": "Head"
+            "org_type": "AP"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
-            "user_level": "Head",
             "binding_pin": null
         },
 
@@ -37,16 +35,14 @@ test_read_allowed if {
 
 # Test passes when action is denied since AP is not allowed to read NHG-PS
 test_read_not_allowed if {
-    not ap_usage.allow_usage with input as {
+    not usage.allow_usage with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP",
-            "user_level": "Head"
+            "org_type": "AP"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
-            "user_level": "Head",
             "binding_pin": null
         },
 
@@ -70,16 +66,14 @@ test_read_not_allowed if {
 
 # Test passes when user attempts copy action and can_copy==true
 test_copy_allowed if {
-    ap_usage.allow_usage with input as {
+    usage.allow_usage  with input as {
         "delegator": {
             "user_uzi_id": 123,
-            "org_type": "AP",
-            "user_level": "Head"
+            "org_type": "AP"
         },
         "delegatee": {
             "user_uzi_id": 456,
             "org_type": "AP",
-            "user_level": "Head",
             "binding_pin": null
         },
 
