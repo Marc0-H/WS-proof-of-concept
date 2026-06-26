@@ -1,0 +1,26 @@
+{
+    "delegator": {
+        "user_uzi_id": 100,
+        "org_type": "HA"
+    },
+    "delegatee": {
+        "user_uzi_id": 101,
+        "org_type": "SPEC",
+        "binding_pin": 4001
+    },
+
+    "reference": {
+        "is_bound": true,
+        "bound_user_uzi_id": 101,
+        "revoked": false,
+        "can_copy": true,
+        "expects_binding_pin": true,
+        "binding_pin": 4001,
+        "bind_expiry_window": [2027, 1, 1],
+        "expiry": [2028, 1, 1],
+        "document": "AMO",
+        "allowed_permissions": ["Retrieve", "Pushback"]
+    },
+
+    "action": "Copy"
+}

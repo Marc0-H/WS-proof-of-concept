@@ -1,10 +1,9 @@
 {
-  "principal": "delegator::\"123\"",
+  "principal": "delegator::\"101\"",
   "action": "Action::\"bind\"",
-  "resource": "reference::\"ref1\"",
+  "resource": "reference::\"ref2\"",
   "context": {
     "delegatee_org_type": "AP",
-    "delegatee_user_level": "Head",
     "current_time": "2026-01-01T00:00:00Z"
   }
 }

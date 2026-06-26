@@ -1,15 +1,17 @@
 [
   {
     "uid": {
-      "type": "delegator",
-      "id": "123"
+      "type": "delegatee",
+      "id": "101"
     },
     "attrs": {
-      "org_type": "AP",
-      "user_level": "Head"
+      "org_type": "SPEC",
+      "user_uzi_id": 101
     },
     "parents": []
   },
+
+
   {
     "uid": {
       "type": "reference",
@@ -17,11 +19,13 @@
     },
     "attrs": {
       "is_bound": true,
-      "bound_user_uzi_id": "456",
       "revoked": false,
-      "expects_binding_pin": false,
+      "bound_user_uzi_id": 101,
+      "expects_binding_pin": true,
+      "binding_pin": 4001,
       "bind_expiry_window": "2027-01-01T00:00:00Z",
       "expiry": "2028-01-01T00:00:00Z",
+      "can_copy": true,
       "allowed_permissions": ["Retrieve", "Pushback"]
     },
     "parents": []

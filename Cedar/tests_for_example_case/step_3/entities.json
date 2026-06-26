@@ -2,24 +2,26 @@
   {
     "uid": {
       "type": "delegator",
-      "id": "123"
+      "id": "101"
     },
     "attrs": {
-      "org_type": "AP",
-      "user_level": "Head",
-      "binding_pin": "987"
+      "org_type": "SPEC"
     },
     "parents": []
   },
+
+
   {
     "uid": {
       "type": "reference",
-      "id": "ref1"
+      "id": "ref2"
     },
     "attrs": {
-      "is_bound": false,
-      "expects_binding_pin": true,
-      "binding_pin": "987",
+      "is_bound": true,
+      "revoked": false,
+      "bound_user_uzi_id": 102,
+      "expects_binding_pin": false,
+
       "bind_expiry_window": "2027-01-01T00:00:00Z",
       "allowed_permissions": ["Retrieve", "Pushback"]
     },

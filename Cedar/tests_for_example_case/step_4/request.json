@@ -1,0 +1,9 @@
+{
+  "principal": "delegatee::\"102\"",
+  "action": "Action::\"Retrieve\"",
+  "resource": "reference::\"ref2\"",
+  "context": {
+    "current_time": "2026-01-01T00:00:00Z",
+    "binding_pin": 4001
+  }
+}

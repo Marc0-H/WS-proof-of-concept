@@ -4,8 +4,12 @@ This repo shows an implementation of policies needed for a push authorisation sy
 
 ## Rego
 
-example test: opa test tests/late_bind_test.rego general_binding_and_delegation_policy.rego
+To run the example scenario run:
+`python3 example_run.py`
+in the directory of /Rego/
 
 ## Cedar
 
-example test: cedar authorize --policies general_binding_and_delegation_policy.cedar --entities tests/spec_cannot_bind_ap/entities.json --request-json tests/spec_cannot_bind_ap/request.json
+To run the example scenario run:
+`python3 example_run.py`
+in the directory of /Cedar/

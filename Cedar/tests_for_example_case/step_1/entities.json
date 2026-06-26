@@ -2,14 +2,15 @@
   {
     "uid": {
       "type": "delegator",
-      "id": "123"
+      "id": "100"
     },
     "attrs": {
-      "org_type": "AP",
-      "user_level": "Head"
+      "org_type": "HA"
     },
     "parents": []
   },
+
+
   {
     "uid": {
       "type": "reference",
@@ -17,8 +18,9 @@
     },
     "attrs": {
       "is_bound": false,
-      "expects_binding_pin": false,
-      "bind_expiry_window": "2024-01-01T00:00:00Z",
+      "expects_binding_pin": true,
+      "binding_pin": 4001,
+      "bind_expiry_window": "2027-01-01T00:00:00Z",
       "allowed_permissions": ["Retrieve", "Pushback"]
     },
     "parents": []

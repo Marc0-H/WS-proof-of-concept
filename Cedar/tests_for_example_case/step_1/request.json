@@ -1,10 +1,10 @@
 {
-  "principal": "delegator::\"123\"",
+  "principal": "delegator::\"100\"",
   "action": "Action::\"bind\"",
   "resource": "reference::\"ref1\"",
   "context": {
-    "delegatee_org_type": "AP",
+    "delegatee_org_type": "SPEC",
     "current_time": "2026-01-01T00:00:00Z",
-    "delegatee_user_level": "Head"
+    "binding_pin": 4001
   }
 }
