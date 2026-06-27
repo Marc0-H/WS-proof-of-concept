@@ -18,10 +18,14 @@
     },
     "attrs": {
       "is_bound": false,
+      "revoked": false,
       "expects_binding_pin": true,
       "binding_pin": 4001,
       "bind_expiry_window": "2027-01-01T00:00:00Z",
-      "allowed_permissions": ["Retrieve", "Pushback"]
+      "expiry": "2028-01-01T00:00:00Z",
+      "can_copy": true,
+      "allowed_permissions": ["Retrieve", "Pushback"],
+      "document": "AMO"
     },
     "parents": []
   }

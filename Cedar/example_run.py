@@ -25,6 +25,8 @@ def cedar_eval(policy_file, entities_file, request_file):
         entities_file,
         "--request-json",
         request_file,
+        "--schema",
+        "schema.cedarschema"
     ]
 
     result = subprocess.run(

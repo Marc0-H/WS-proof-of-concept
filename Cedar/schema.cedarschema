@@ -1,0 +1,67 @@
+
+
+//
+// Principals
+//
+entity delegator {
+    org_type: String
+};
+
+entity delegatee {
+    org_type: String,
+    user_uzi_id: Long
+};
+
+//
+// Resources
+//
+
+entity reference {
+    is_bound: Bool,
+    revoked: Bool,
+    bound_user_uzi_id?: Long,
+    expects_binding_pin: Bool,
+    binding_pin?: Long,
+    bind_expiry_window: String,
+    expiry?: String,
+    can_copy: Bool,
+    allowed_permissions: Set<String>,
+    document: String
+};
+
+//
+// Actions
+//
+action "bind" appliesTo {
+    principal: [delegator],
+    resource: [reference],
+    context: {
+        delegatee_org_type: String,
+        current_time: String,
+        binding_pin?: Long
+    }
+};
+
+action "Copy" appliesTo {
+    principal: [delegatee],
+    resource: [reference],
+    context: {
+        current_time: String
+    }
+};
+
+action "Retrieve" appliesTo {
+    principal: [delegatee],
+    resource: [reference],
+    context: {
+        current_time: String
+    }
+};
+
+action "Pushback" appliesTo {
+    principal: [delegatee],
+    resource: [reference],
+    context: {
+        current_time: String
+    }
+};

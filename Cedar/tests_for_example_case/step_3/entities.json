@@ -23,7 +23,10 @@
       "expects_binding_pin": false,
 
       "bind_expiry_window": "2027-01-01T00:00:00Z",
-      "allowed_permissions": ["Retrieve", "Pushback"]
+      "expiry": "2028-01-01T00:00:00Z",
+      "can_copy": true,
+      "allowed_permissions": ["Retrieve", "Pushback"],
+      "document": "AMO"
     },
     "parents": []
   }

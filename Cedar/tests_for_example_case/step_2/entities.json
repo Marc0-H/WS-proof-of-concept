@@ -26,7 +26,8 @@
       "bind_expiry_window": "2027-01-01T00:00:00Z",
       "expiry": "2028-01-01T00:00:00Z",
       "can_copy": true,
-      "allowed_permissions": ["Retrieve", "Pushback"]
+      "allowed_permissions": ["Retrieve", "Pushback"],
+      "document": "AMO"
     },
     "parents": []
   }
