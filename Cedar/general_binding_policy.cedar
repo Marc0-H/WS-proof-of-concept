@@ -7,7 +7,9 @@ forbid (
 when
 {
     !resource.is_bound &&
-    datetime(context.current_time) > datetime(resource.bind_expiry_window)
+    context has current_time &&
+    resource has bind_expiry_window &&
+    context.current_time > resource.bind_expiry_window
 };
 
 // Global Deny when binding pin required but invalid
@@ -20,6 +22,8 @@ when
 {
     !resource.is_bound &&
     resource.expects_binding_pin &&
+    context has binding_pin &&
+    resource has binding_pin &&
     context.binding_pin != resource.binding_pin
 };
 

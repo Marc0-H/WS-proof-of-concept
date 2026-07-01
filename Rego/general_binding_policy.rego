@@ -6,6 +6,23 @@ default binding_window_requirement_satisfied := false
 default binding_pin_required := true
 default binding_pin_matches := false
 default binding_pin_requirement_satisfied := false
+default binding_mapping_satisfied := false
+
+# A role is allowed to create bindings to specifc other roles
+allowed_bindings := {
+    "HA":   {"HA", "HAP", "SEH", "SPEC", "AP"},
+    "HAP":  {"HA", "HAP", "SEH", "AP"},
+    "SEH":  {"SPEC", "AP"},
+    "AP":   {"AP"},
+    "SPEC": {"SPEC", "AP"}
+}
+
+# Check if roles of the creator of the reference and the receiver adhere to the 
+# binding mapping.
+binding_mapping_satisfied if {
+    delegatee_role := input.delegatee.org_type
+    delegatee_role in allowed_bindings[input.delegator.org_type]
+}
 
 
 # Check if this is a first-time access attempt and if the reference is late-bound
@@ -43,46 +60,10 @@ binding_pin_requirement_satisfied if {
 }
 
 
-# HA can delegate to anyone
+# Check if requirements are satisfied for binding window and PIN
+# Then check if the roles conform to the binding mapping.
 allow_bind if {
     binding_window_requirement_satisfied
     binding_pin_requirement_satisfied
-
-    input.delegator.org_type == "HA"
-}
-
-# HAP can delegate to anyone except Specialists
-allow_bind if {
-    binding_window_requirement_satisfied
-    binding_pin_requirement_satisfied
-
-    input.delegator.org_type == "HAP"
-    input.delegatee.org_type != "SPEC"
-}
-
-# SEH can delegate to specialist or pharmacy
-allow_bind if {
-    binding_window_requirement_satisfied
-    binding_pin_requirement_satisfied
-
-    input.delegator.org_type == "SEH"
-    input.delegatee.org_type in ["SPEC", "AP"]
-}
-
-# Pharmacy can only delegate to Pharmacy.
-allow_bind if {
-    binding_window_requirement_satisfied
-    binding_pin_requirement_satisfied
-
-    input.delegator.org_type == "AP"
-    input.delegatee.org_type == "AP"
-}
-
-# Specialist can delegate to specialist.
-allow_bind if {
-    binding_window_requirement_satisfied
-    binding_pin_requirement_satisfied
-
-    input.delegator.org_type == "SPEC"
-    input.delegatee.org_type in ["SPEC", "AP"]
+    binding_mapping_satisfied
 }

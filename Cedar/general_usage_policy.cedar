@@ -2,13 +2,23 @@ forbid (principal, action, resource)
 when { !resource.is_bound };
 
 forbid (principal, action, resource)
-when { principal.user_uzi_id != resource.bound_user_uzi_id };
+when
+{
+    principal has user_uzi_id &&
+    resource has bound_user_uzi_id &&
+    principal.user_uzi_id != resource.bound_user_uzi_id
+};
 
 forbid (principal, action, resource)
 when { resource.revoked };
 
 forbid (principal, action, resource)
-when { datetime(context.current_time) > datetime(resource.expiry) };
+when
+{
+    context has current_time &&
+    resource has expiry &&
+    context.current_time > resource.expiry
+};
 
 //
 // IF PHARMACIST
